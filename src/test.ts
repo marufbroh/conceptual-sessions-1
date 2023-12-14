@@ -19,9 +19,13 @@ const users: User[] = [
 ];
 
 
-function getPropertyFromArray(){
-    
+function getPropertyFromArray<T, K extends keyof T>(array: T[], key: K): T[K][] {
+    return array.map(obj => obj[key])
 }
+
+const extractedName = getPropertyFromArray(users, "name")
+
+console.log(extractedName);
 
 
 
